@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智能提示词工具</title>
+  <style>
+    body {
+      width: 320px;
+      min-height: 400px;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .header {
+      padding: 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .header h1 {
+      margin: 0 0 8px 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .header p {
+      margin: 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .status {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .status-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .status-label {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .status-value {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .status-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .status-indicator.active {
+      background: #10b981;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+    }
+
+    .status-indicator.inactive {
+      background: #ef4444;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .action-btn {
+      padding: 12px 16px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .action-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .action-btn:active {
+      transform: translateY(0);
+    }
+
+    .action-btn.primary {
+      background: rgba(16, 185, 129, 0.8);
+    }
+
+    .action-btn.primary:hover {
+      background: rgba(16, 185, 129, 1);
+    }
+
+    .footer {
+      padding: 16px 20px;
+      text-align: center;
+      font-size: 12px;
+      opacity: 0.7;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .icon {
+      font-size: 16px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>💡 智能提示词工具</h1>
+    <p>让AI对话更高效</p>
+  </div>
+
+  <div class="content">
+    <div class="status">
+      <div class="status-item">
+        <span class="status-label">
+          <span class="status-indicator" id="page-indicator"></span>
+          页面检测
+        </span>
+        <span class="status-value" id="page-status">检测中...</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">
+          <span class="status-indicator" id="tool-indicator"></span>
+          工具状态
+        </span>
+        <span class="status-value" id="tool-status">初始化中...</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">提示词数量</span>
+        <span class="status-value" id="prompt-count">-</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="action-btn primary" id="toggle-window">
+        <span class="icon">🪟</span>
+        切换悬浮窗
+      </button>
+      <button class="action-btn" id="manage-prompts">
+        <span class="icon">📝</span>
+        管理提示词
+      </button>
+      <button class="action-btn" id="settings">
+        <span class="icon">⚙️</span>
+        设置
+      </button>
+      <button class="action-btn" id="help">
+        <span class="icon">❓</span>
+        帮助
+      </button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>版本 1.0.0 | 支持 ChatGPT & DeepSeek</p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
