@@ -94,6 +94,7 @@
 - ✅ ChatGPT (chatgpt.com)
 - ✅ DeepSeek (chat.deepseek.com)
 - ✅ DeepSeek (www.deepseek.com)
+- 目前主要支持ChatGPT和DeepSeek，其他平台可以通过修改manifest.json中的host_permissions来添加支持。
 
 ## 📦 默认提示词库
 
@@ -172,13 +173,6 @@ A: 在管理页面点击"导出"按钮，可以下载JSON格式的备份文件�
 
 ### Q: 支持其他AI平台吗？
 A: 目前主要支持ChatGPT和DeepSeek，其他平台可以通过修改manifest.json中的host_permissions来添加支持。
-
-## 📞 联系方式
-
-- 项目地址：[GitHub Repository]
-- 问题反馈：[Issues Page]
-- 邮箱：[your-email@example.com]
-
 ---
 
 **让AI对话更高效，从智能提示词开始！** 🚀
