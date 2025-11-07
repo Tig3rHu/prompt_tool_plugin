@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "智能提示词工具",
+  "version": "1.0.0",
+  "description": "自动检测ChatGPT和DeepSeek页面，提供便捷的提示词插入功能",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*",
+    "https://chat.deepseek.com/*",
+    "https://www.deepseek.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*",
+        "https://chat.deepseek.com/*",
+        "https://www.deepseek.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "智能提示词工具"
+  },
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["floating-window.html", "icons/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
